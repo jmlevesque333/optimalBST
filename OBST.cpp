@@ -1,64 +1,52 @@
+//jean-Michel Levesque A00172309
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
+#include <utility>
 
 using namespace std;
 
 class obst
 {
-	node* root;
-	int nbOfNodes;
+	vector <vector <int> > pere;
+	vector <vector <int> > sumFrequence;
+	vector <vector <int> > intervalFrequence;
+	vector <pair <string, int> > elements;
+public:
 	obst()
+	{}
+	void addPair(string name, int frequence)
 	{
-		root = NULL;
-		nbOfNodes = 0;
+		elements.push_back(make_pair(name, frequence));
 	}
-	void addNode(string name, int frequence)
+	void GetOptimalPrime()
 	{
-		if (nbOfNodes == 0)
-			root = new node(name, frequence);
-		else
+		
+		for (int i = 0; i < elements.size(); i++)
 		{
+			pere[i][i] = 0;
+			sumFrequence[i][i] = 0;
+			intervalFrequence[i][i] = 0;
 
 		}
 	}
 
-
-};
-
-class node
-{
-public:
-	string name;
-	string racine;
-	int frequence;.
-
-	node* left;
-	node* right;
-
-	node(string name, int frequence, node* left = NULL, node* right = NULL)
-	{
-		this->name = name;
-		this->frequence = frequence;
-		this->left = left;
-		this->right = right;
-	}
 };
 
 int main()
 {
+	obst a;
 	string name;
 	string frequence;
 	int frequence2;
-	obst arbre();
 	fstream file;
 	file.open("input.txt");
 	while (file >> name)
 	{
 		file >> frequence;
 		frequence2 = stoi(frequence);
-
+		a.addPair(name, frequence2);
 
 	}
 
