@@ -4,8 +4,13 @@
 #include <vector>
 #include <fstream>
 #include <utility>
+#include <algorithm>
 
 using namespace std;
+
+bool pairCompare(const pair<string, int> a, const pair<string, int> b) {
+	return a.first < b.first;
+}
 
 class obst
 {
@@ -20,16 +25,28 @@ public:
 	{
 		elements.push_back(make_pair(name, frequence));
 	}
-	void GetOptimalPrime()
+	void sorting()
 	{
-		
+		sort(elements.begin(), elements.end());
+	}
+	void GetOptimusPrime()
+	{
+		vector <int> temp;
 		for (int i = 0; i < elements.size(); i++)
 		{
+			temp.push_back(-1);
+			for (int j = 0; j < elements.size(); i++)
+			{	
+				pere.push_back(temp);
+				sumFrequence.push_back(temp);
+				intervalFrequence.push_back(temp);
+			}
 			pere[i][i] = 0;
 			sumFrequence[i][i] = 0;
 			intervalFrequence[i][i] = 0;
-
 		}
+
+
 	}
 
 };
@@ -47,8 +64,8 @@ int main()
 		file >> frequence;
 		frequence2 = stoi(frequence);
 		a.addPair(name, frequence2);
-
 	}
+	a.sorting();
 
 	return 0;
 }
